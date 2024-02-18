@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>preview</title>
+    <style>
+        *:not(:defined) {
+            display: none;
+        }
+    </style>
+</head>
+<div id="screenResolution"></div>
+<div id="screenResolution2"></div>
+<div id="screenResolution3"></div>
+<div id="screenDensity"></div>
+<div id="cpuCoreCount"></div>
+<div id="cpu"></div>
+<div id="memorySize"></div>
+<div id="gpuName"></div>
+<div id="electricityLevel"></div>
+<div id="isCharging"></div>
+<div id="languageList"></div>
+<div id="cameraCount"></div>
+<div id="microphoneCount"></div>
+<div id="ua"></div>
+
+<script>
+    document.getElementById('screenResolution').innerText = `分辨率(window.screen)： ${window.screen.width} x ${window.screen.height}`;
+    document.getElementById('screenResolution2').innerText = `分辨率(window.inner)： ${window.innerWidth} x ${window.innerHeight}`;
+    document.getElementById('screenResolution3').innerText = `分辨率(window.screen.avail)： ${window.screen.availWidth} x ${window.screen.availHeight}`;
+    document.getElementById('screenDensity').innerText = `屏幕密度： ${getDPI()}dpi, 比率：${window.devicePixelRatio}`;
+    document.getElementById('cpuCoreCount').innerText = `CPU核数： ${navigator.hardwareConcurrency}`;
+    document.getElementById('memorySize').innerText = `内存大小： ${navigator.deviceMemory}GB`;
+    document.getElementById('gpuName').innerText = `gpuName： ${gpuName()}`;
+
+    document.getElementById('languageList').innerText = `语⾔列表： ${navigator.languages}`;
+    document.getElementById('ua').innerText = `userAgent： ${navigator.userAgent}`;
+
+
+    function getDPI() {
+        const div = document.createElement('div')
+        div.style.cssText = 'height: 1in; left: -100%; position: absolute; top: -100%; width: 1in;'
+        document.body.appendChild(div)
+        const devicePixelRatio = window.devicePixelRatio || 1,
+            dpi = div.offsetWidth * devicePixelRatio;
+        console.log('dpi_x, dpi_y', dpi);
+        return dpi
+    }
+
+
+    function gpuName() {
+        var canvas = document.createElement('canvas');
+        var gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+        if (gl) {
+            var debugRendererInfo = gl.getExtension('WEBGL_debug_renderer_info');
+            if (debugRendererInfo) {
+                return gl.getParameter(debugRendererInfo.UNMASKED_RENDERER_WEBGL);
+            }
+        }
+    }
+
+    function electricityLevel() {
+        navigator.getBattery().then((res) => {
+            console.log(res, '123')
+            document.getElementById('electricityLevel').innerText = `电量： ${res.level * 100}`;
+        });
+    }
+
+    electricityLevel()
+
+    isCharging()
+
+    async function isCharging() {
+        const battery = await navigator.getBattery();
+        document.getElementById('isCharging').innerText = `是否充电： ${(!!battery.charging)}`;
+    }
+
+    cameraCount()
+
+    function cameraCount() {
+        navigator.mediaDevices.enumerateDevices().then((devices) => {
+            const videoDevices = devices.filter(function (device) {
+                return device.kind === 'videoinput';
+            });
+            document.getElementById('languageList').innerText = `摄像头个数： ${videoDevices.length}`;
+        })
+    }
+
+    microphoneCount()
+
+    function microphoneCount() {
+        navigator.mediaDevices.enumerateDevices().then(function (devices) {
+            var audioDevices = devices.filter(function (device) {
+                return device.kind === 'audioinput';
+            });
+            document.getElementById('microphoneCount').innerText = `麦克风个数： ${audioDevices.length}`;
+        })
+    }
+
+</script>
+</body>
+</html>
