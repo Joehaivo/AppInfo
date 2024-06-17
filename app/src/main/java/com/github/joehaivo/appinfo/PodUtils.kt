@@ -1,8 +1,10 @@
 package com.github.joehaivo.appinfo
 
+import android.annotation.SuppressLint
+import android.util.Log
 import com.android.server.dexguard.IDexGuardClient
 
-object CloudDeviceUtils {
+object PodUtils {
 
     const val TAG = "CloudDeviceUtils"
 
@@ -32,5 +34,16 @@ object CloudDeviceUtils {
         return "VM$ips"
     }
 
-
+    @SuppressLint("PrivateApi")
+    fun getSystemProperties(properties: String): String {
+        var systemProperties: String = ""
+        try {
+            val c = Class.forName("android.os.SystemProperties")
+            val get = c.getMethod("get", String::class.java)
+            systemProperties = get.invoke(c, properties) as String
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return systemProperties
+    }
 }

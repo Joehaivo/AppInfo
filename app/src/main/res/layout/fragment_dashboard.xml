@@ -1,84 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.dashboard.DashboardFragment">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_padCode"
-        android:layout_width="wrap_content"
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="PadCode"/>
+        android:orientation="vertical"
+        tools:context=".ui.dashboard.DashboardFragment">
 
-    <TextView
-        android:id="@+id/tv_brand"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="型号"/>
+        <TextView
+            android:id="@+id/tv_touch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:textSize="10sp"
+            android:text="Touch"/>
 
-    <TextView
-        android:id="@+id/tv_root"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="ROOT"/>
+        <TextView
+            android:id="@+id/tv_padCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="PadCode"/>
 
-    <TextView
-        android:id="@+id/tv_display"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="分辨率"/>
+        <TextView
+            android:id="@+id/tv_brand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="型号"/>
 
-    <Button
-        android:id="@+id/tv_cpuinfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="8dp"
-        android:maxLines="2"
-        android:text="/proc/cpuinfo"/>
+        <TextView
+            android:id="@+id/tv_root"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="ROOT"/>
 
-    <Button
-        android:id="@+id/tv_meminfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="8dp"
-        android:maxLines="2"
-        android:text="/proc/meminfo"/>
+        <TextView
+            android:id="@+id/tv_display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="分辨率"/>
 
-    <TextView
-        android:id="@+id/tv_gpu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="GPU"/>
+        <Button
+            android:id="@+id/tv_cpuinfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:maxLines="2"
+            android:text="/proc/cpuinfo"/>
 
-    <TextView
-        android:id="@+id/tv_ua"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="8dp"
-        android:maxLines="2"
-        android:text="UA"/>
+        <Button
+            android:id="@+id/tv_meminfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:maxLines="2"
+            android:text="/proc/meminfo"/>
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/tv_gpu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="GPU"/>
+
+        <TextView
+            android:id="@+id/tv_ua"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:maxLines="2"
+            android:text="UA"/>
+
+        <TextView
+            android:id="@+id/tv_imei"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:maxLines="2"
+            android:text="IMEI"/>
+
+    </LinearLayout>
+</ScrollView>
